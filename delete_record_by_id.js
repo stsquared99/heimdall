@@ -12,7 +12,7 @@ export const route = {
 export default async(req, res) => {
 	try {
 		await Records.findOneAndRemove({
-			_id: req.params.record_id,
+			id: req.params.record_id,
 			zone_id: req.params.zone_identifier
 		}).exec();
 	} catch (error) {

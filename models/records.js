@@ -23,12 +23,14 @@ const RecordsSchema = new Schema({
 	},
 	proxied: {
 		type: Boolean,
+		default: false
 	},
 	proxiable: {
 		type: Boolean,
 	},
 	ttl: {
 		type: Number,
+		default: 1
 	},
 	zone_id: {
 		type: String,
