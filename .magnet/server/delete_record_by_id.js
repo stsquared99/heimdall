@@ -1,8 +1,12 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 /**
  * Model Schema
  */
-const Records = require('./models/records')
-
+var Records = require('./models/records');
 
 function keyNamer(data) {
 	data._name = data.name;
@@ -14,13 +18,13 @@ function keyNamer(data) {
 	return data;
 }
 
-export const route = {
+var route = exports.route = {
 	method: 'delete',
 	path: '/zones/:zone_identifier/dns_records/:record_id',
-	type: 'json',
+	type: 'json'
 };
 
-export default async(req, res) => {
+exports.default = async function (req, res) {
 	try {
 		await Records.findOneAndRemove({
 			_id: req.params.record_id,
