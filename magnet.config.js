@@ -3,6 +3,9 @@
 module.exports = {
   magnet: {
     port: 3000,
-    //logLevel: 'error'
+    //logLevel: 'error',
+		src: [
+      'zones/**/*.js',
+    ],
   },
 };

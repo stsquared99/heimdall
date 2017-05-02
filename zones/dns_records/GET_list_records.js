@@ -1,7 +1,7 @@
 /**
  * Model Schema
  */
-const Records = require('./models/records')
+const Records = require('../../models/records');
 
 export const route = {
 	method: 'get',
