@@ -15,9 +15,19 @@ export default async(req, res) => {
 			id: req.params.record_id,
 			zone_id: req.params.zone_identifier
 		}).exec();
+			res.status(200).json({
+				result: 'Record deleted',
+				info: {
+					id: id
+				}
+			});
 	} catch (error) {
 		res.status(500).json({
-			error: 'Cannot delete record'
+			result: 'error',
+			message: 'An unknown error occurred',
+			info: {
+				error: error
+			}
 		});
 	}
 };
