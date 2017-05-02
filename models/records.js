@@ -5,12 +5,12 @@ const mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 const RecordsSchema = new Schema({
-	_type: {
+	type: {
 		type: String,
 		required: true,
 		trim: true,
 	},
-	_name: {
+	name: {
 		type: String,
 		required: true,
 	},

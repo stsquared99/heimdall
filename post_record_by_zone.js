@@ -1,5 +1,3 @@
-const keys = require('./keys')
-
 /**
  * Model Schema
  */
@@ -18,7 +16,7 @@ export default async(req, res) => {
 			error: '404'
 		};
 	} else {
-		let data = keys.makeLocal(req.body || {})
+		let data = req.body || {}
 		data.zone_id = req.params.zone_identifier;
 		let record = new Records(data)
 
