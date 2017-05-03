@@ -10,5 +10,9 @@
   "scripts": {
     "dev": "magnet",
     "start": "magnet start"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1"
   }
 }
