@@ -14,6 +14,7 @@ export default async(req, res) => {
 	if (!req.body.hasOwnProperty('content')
 	|| !req.body.hasOwnProperty('name')
 	|| !req.body.hasOwnProperty('type')) {
+		log.error('missing parameters');
 		res.status(403).json({
 			result: 'error',
 			message: 'Cannot create record - missing required parameters',
@@ -23,7 +24,6 @@ export default async(req, res) => {
 				content: req.body.content || '{MISSING}',
 			},
 		});
-		log.error('missing parameters');
 	} else {
 		let data = req.body || {};
 		data.zone_id = req.params.zone_identifier;
@@ -33,6 +33,7 @@ export default async(req, res) => {
 		let record = new Records(data);
 		record.save();
 
+		log.info('record %s created for zone %s', data.id, req.params.zone_identifier);
 		res.status(200).json({
 			result: 'success',
 			message: 'Record Created',
@@ -40,6 +41,5 @@ export default async(req, res) => {
 				id: data.id,
 			},
 		});
-		log.info('record %s created for zone %s', data.id, req.params.zone_identifier);
 	}
 };

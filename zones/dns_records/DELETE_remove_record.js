@@ -16,13 +16,16 @@ export default async(req, res) => {
 			id: req.params.identifier,
 			zone_id: req.params.zone_identifier,
 		}).exec();
-			res.status(200).json({
-				result: 'Record deleted',
-				info: {
-					id: id,
-				},
-			});
+
+		log.info('Record %s was deleted from zone %s', req.params.identifier, req.params.zone_identifier)
+		res.status(200).json({
+			result: 'Record deleted',
+			info: {
+				id: id,
+			},
+		});
 	} catch (error) {
+		log.error({error: error}, 'An error occurred while listing records');
 		res.status(500).json({
 			result: 'error',
 			message: 'An unknown error occurred',
@@ -30,6 +33,5 @@ export default async(req, res) => {
 				error: error,
 			},
 		});
-		log.error({error: error}, 'An error occurred while listing records');
 	}
 };
