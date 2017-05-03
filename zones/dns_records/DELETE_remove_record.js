@@ -14,21 +14,21 @@ export default async(req, res) => {
 	try {
 		await Records.findOneAndRemove({
 			id: req.params.identifier,
-			zone_id: req.params.zone_identifier
+			zone_id: req.params.zone_identifier,
 		}).exec();
 			res.status(200).json({
 				result: 'Record deleted',
 				info: {
-					id: id
-				}
+					id: id,
+				},
 			});
 	} catch (error) {
 		res.status(500).json({
 			result: 'error',
 			message: 'An unknown error occurred',
 			info: {
-				error: error
-			}
+				error: error,
+			},
 		});
 		log.error({error: error}, 'An error occurred while listing records');
 	}

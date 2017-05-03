@@ -10,8 +10,10 @@ export const route = {
 };
 
 export default async(req, res) => {
-	if (!req.body.hasOwnProperty('content') || !req.body.hasOwnProperty('name') || !req.body.hasOwnProperty('type')) {
 	log.debug({req: req}, 'received request');
+	if (!req.body.hasOwnProperty('content')
+	|| !req.body.hasOwnProperty('name')
+	|| !req.body.hasOwnProperty('type')) {
 		res.status(403).json({
 			result: 'error',
 			message: 'Cannot update record - missing required parameters',
@@ -19,8 +21,8 @@ export default async(req, res) => {
 				content: req.body.content,
 				id: id,
 				name: req.body.name,
-				type: req.body.type
-			}
+				type: req.body.type,
+			},
 		});
 		log.error('missing parameters');
 	} else {
@@ -28,16 +30,16 @@ export default async(req, res) => {
 			await Records.findOneAndUpdate({
 
 				id: req.params.identifier,
-				zone_id: req.params.zone_identifier
+				zone_id: req.params.zone_identifier,
 			}, {
 				$set: {
-					"content": req.body.content,
-					"name": req.body.name,
-					"proxied": req.body.proxied,
-					"ttl": req.body.ttl,
-					"type": req.body.type
-				}
-			})
+					'content': req.body.content,
+					'name': req.body.name,
+					'proxied': req.body.proxied,
+					'ttl': req.body.ttl,
+					'type': req.body.type,
+				},
+			});
 			res.status(200).json({
 				result: 'success',
 				message: 'Record updated',
@@ -46,8 +48,8 @@ export default async(req, res) => {
 					name: req.body.name,
 					proxied: req.body.proxied,
 					ttl: req.body.ttl,
-					type: req.body.type
-				}
+					type: req.body.type,
+				},
 			});
 			log.info('record created');
 		} catch (error) {
@@ -55,11 +57,10 @@ export default async(req, res) => {
 				result: 'error',
 				message: 'Cannot update record',
 				info: {
-					error: error
-				}
+					error: error,
+				},
 			});
 			log.error({error: error}, 'Error updating a record');
 		}
 	}
-
 };

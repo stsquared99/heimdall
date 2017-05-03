@@ -1,8 +1,8 @@
-'use strict'
+'use strict';
 
-const mongoose = require('mongoose'),
-	mongooseApiQuery = require('mongoose-api-query'),
-	Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const mongooseApiQuery = require('mongoose-api-query');
+const Schema = mongoose.Schema;
 
 const RecordsSchema = new Schema({
 	type: {
@@ -23,14 +23,14 @@ const RecordsSchema = new Schema({
 	},
 	proxied: {
 		type: Boolean,
-		default: false
+		default: false,
 	},
 	proxiable: {
 		type: Boolean,
 	},
 	ttl: {
 		type: Number,
-		default: 1
+		default: 1,
 	},
 	zone_id: {
 		type: String,
@@ -40,12 +40,12 @@ const RecordsSchema = new Schema({
 		type: String,
 	},
 }, {
-	minimize: false
+	minimize: false,
 });
 
 
-RecordsSchema.plugin(mongooseApiQuery)
+RecordsSchema.plugin(mongooseApiQuery);
 
-var Records = mongoose.model('Records', RecordsSchema);
+let Records = mongoose.model('Records', RecordsSchema);
 
 module.exports = Records;
