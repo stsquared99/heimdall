@@ -1,9 +1,12 @@
-const config = require('./config'),
-	mongoose = require('mongoose');
+import bunyan from 'bunyan';
+import mongoose from 'mongoose';
+
+const config = require('./config');
 
 
-mongoose.connect('mongodb://localhost/api');
+global.log = bunyan.createLogger({name: config.name, 'level': 'info'});
 
-export default (app, magnet) => {
+mongoose.Promise = global.Promise;
+mongoose.connect(config.db.uri);
 
-};
+export default (app, magnet) => {};

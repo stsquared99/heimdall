@@ -6,6 +6,8 @@ module.exports = {
     //logLevel: 'error',
 		src: [
       'zones/**/*.js',
+			'models/*.js',
+			'config.js',
     ],
   },
 };
