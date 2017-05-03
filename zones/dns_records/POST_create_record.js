@@ -11,6 +11,7 @@ export const route = {
 
 export default async(req, res) => {
 	if (!req.body.hasOwnProperty('content') || !req.body.hasOwnProperty('name') || !req.body.hasOwnProperty('type')) {
+	log.debug({req: req}, 'received request');
 		res.status(403).json({
 			result: 'error',
 			message: 'Cannot create record - missing required parameters',
@@ -20,6 +21,7 @@ export default async(req, res) => {
 				content: req.body.content
 			}
 		});
+		log.error('missing parameters');
 	} else {
 		let data = req.body || {}
 		data.zone_id = req.params.zone_identifier;
@@ -36,6 +38,7 @@ export default async(req, res) => {
 				id: data.id
 			},
 		});
+		log.info('record %s created for zone %s', data.id, req.params.zone_identifier);
 	}
 
 

@@ -11,6 +11,7 @@ export const route = {
 
 export default async(req, res) => {
 	if (!req.body.hasOwnProperty('content') || !req.body.hasOwnProperty('name') || !req.body.hasOwnProperty('type')) {
+	log.debug({req: req}, 'received request');
 		res.status(403).json({
 			result: 'error',
 			message: 'Cannot update record - missing required parameters',
@@ -21,6 +22,7 @@ export default async(req, res) => {
 				type: req.body.type
 			}
 		});
+		log.error('missing parameters');
 	} else {
 		try {
 			await Records.findOneAndUpdate({
@@ -47,6 +49,7 @@ export default async(req, res) => {
 					type: req.body.type
 				}
 			});
+			log.info('record created');
 		} catch (error) {
 			res.status(500).json({
 				result: 'error',
@@ -55,6 +58,7 @@ export default async(req, res) => {
 					error: error
 				}
 			});
+			log.error({error: error}, 'Error updating a record');
 		}
 	}
 

@@ -9,12 +9,14 @@ export const route = {
 	type: 'json',
 };
 
-export default async(req) => {
+export default async(req, res) => {
+	log.debug({req: req}, 'received request');
 	try {
 		let recordsList = Records.find({
 			zone_id: req.params.zone_identifier
 		}).exec();
 		return recordsList
+		log.info('The records were retrieved for zone: %s', req.params.zone_identifier)
 	} catch (error) {
 		res.status(404).json({
 			result: 'error',
@@ -23,5 +25,6 @@ export default async(req) => {
 				error: error
 			}
 		});
+		log.error({error: error}, 'An error occurred while listing records')
 	};
 }

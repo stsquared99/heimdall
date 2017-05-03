@@ -10,6 +10,7 @@ export const route = {
 };
 
 export default async(req, res) => {
+	log.debug({req: req}, 'DELETE received for %s record on zone %s', req.params.identifier, req.params.zone_identifier);
 	try {
 		await Records.findOneAndRemove({
 			id: req.params.identifier,
@@ -29,5 +30,6 @@ export default async(req, res) => {
 				error: error
 			}
 		});
+		log.error({error: error}, 'An error occurred while listing records');
 	}
 };
