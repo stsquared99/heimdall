@@ -10,24 +10,18 @@ export const route = {
 	type: 'json',
 };
 
-
-
-
 export default async(req, res) => {
 	log.debug({req: req}, 'received request');
 
 	let error = validate.reqParams(req, 'cannot create record - missing required parameters');
-
 	if (error !== '') {
 		res.status(403).json(error);
 	} else {
-		let data = req.body || {};
-		data.zoneId = req.params.zone_identifier;
-
 		try {
 			let generatedRecord = cloudflare.DNSRecord.create(data);
 
-			return cf.addDNS(generatedRecord).then(async function(record) {
+			return cf.addDNS(generatedRecord)
+			.then(async function(record) {
 				log.info(record.id);
 				data.id = record.id;
 

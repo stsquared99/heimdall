@@ -9,9 +9,8 @@ export const route = {
 	type: 'json',
 };
 
-
 async function deleteRecord(req) {
-	let data = req.body
+	let data = req.body || {};
 
 	data.zoneId = req.params.zone_identifier;
 	data.id = req.params.identifier;
@@ -29,7 +28,8 @@ export default async(req, res) => {
 	deleteRecord(req)
 		.then(function(record) {
 			let generatedRecord = cloudflare.DNSRecord.create(record);
-			let tombstone = cf.deleteDNS(generatedRecord);
+
+			cf.deleteDNS(generatedRecord);
 
 			log.info('Record %s was deleted', generatedRecord.id);
 			res.status(200).json({
