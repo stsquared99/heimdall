@@ -9,29 +9,36 @@ export const route = {
 	type: 'json',
 };
 
+
+async function deleteRecord(req) {
+	let data = req.body
+
+	data.zoneId = req.params.zone_identifier;
+	data.id = req.params.identifier;
+
+	Records.findOneAndRemove({
+		id: data.id,
+		zoneId: data.zoneId,
+	}).exec();
+	return data;
+}
+
 export default async(req, res) => {
 	log.debug({req: req}, 'DELETE received for %s record on zone %s', req.params.identifier, req.params.zone_identifier);
-	try {
-		await Records.findOneAndRemove({
-			id: req.params.identifier,
-			zone_id: req.params.zone_identifier,
-		}).exec();
 
-		log.info('Record %s was deleted from zone %s', req.params.identifier, req.params.zone_identifier)
-		res.status(200).json({
-			result: 'Record deleted',
-			info: {
-				id: id,
-			},
+	deleteRecord(req)
+		.then(async function(record) {
+			let generatedRecord = cloudflare.DNSRecord.create(record);
+			let tombstone = await cf.deleteDNS(generatedRecord);
+			return tombstone;
+		})
+		.then(async function(result) {
+			log.info('Record %s was deleted', result.id);
+			res.status(200).json({
+				result: 'Record deleted',
+				info: {
+					id: result.id,
+				},
+			});
 		});
-	} catch (error) {
-		log.error({error: error}, 'An error occurred while listing records');
-		res.status(500).json({
-			result: 'error',
-			message: 'An unknown error occurred',
-			info: {
-				error: error,
-			},
-		});
-	}
 };
