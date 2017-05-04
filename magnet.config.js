@@ -8,6 +8,7 @@ module.exports = {
       'zones/**/*.js',
 			'models/*.js',
 			'config.js',
+      '*.config.js',
     ],
     ignore: ['build/**', 'node_modules/**', 'static/**', 'test/**'],
   },

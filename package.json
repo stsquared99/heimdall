@@ -3,6 +3,7 @@
   "description": "",
   "dependencies": {
     "bunyan": "^1.8.10",
+    "cloudflare": "^1.1.1",
     "magnet": "^0.20.0",
     "mongoose": "^4.9.7",
     "mongoose-api-query": "^0.1.1-pre"
