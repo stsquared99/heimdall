@@ -32,12 +32,24 @@ const RecordsSchema = new Schema({
 		type: Number,
 		default: 1,
 	},
-	zone_id: {
+	zoneId: {
 		type: String,
 		required: true,
 	},
-	zone_name: {
+	zoneName: {
 		type: String,
+	},
+	locked: {
+		type: Boolean,
+	},
+	createdOn: {
+		type: String,
+	},
+	modifiedOn: {
+		type: String,
+	},
+	priority: {
+		type: Number,
 	},
 }, {
 	minimize: false,
