@@ -27,7 +27,7 @@ export default async(req, res) => {
 		try {
 			let generatedRecord = cloudflare.DNSRecord.create(data);
 
-			return cf.addDNS(generatedRecord).then(function(record) {
+			return cf.addDNS(generatedRecord).then(async function(record) {
 				log.info(record.id);
 				data.id = record.id;
 
