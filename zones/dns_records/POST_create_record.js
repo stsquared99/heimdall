@@ -17,6 +17,9 @@ export default async(req, res) => {
 	if (error !== '') {
 		res.status(403).json(error);
 	} else {
+		let data = req.body || {};
+		data.zoneId = req.params.zone_identifier;
+
 		try {
 			let generatedRecord = cloudflare.DNSRecord.create(data);
 
