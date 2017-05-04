@@ -20,6 +20,7 @@ const RecordsSchema = new Schema({
 	},
 	id: {
 		type: String,
+		unique: true
 	},
 	proxied: {
 		type: Boolean,

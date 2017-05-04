@@ -6,6 +6,7 @@ module.exports = {
     logLevel: 'debug',
 		src: [
       'zones/**/*.js',
+      'zones/*.js',
 			'models/*.js',
 			'config.js',
       '*.config.js',

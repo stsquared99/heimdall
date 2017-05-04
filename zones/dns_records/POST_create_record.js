@@ -1,6 +1,4 @@
-/**
- * Model Schema
- */
+'use strict';
 
 const validate = require('../../utils/validate');
 
