@@ -8,10 +8,9 @@ export default () => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Magnet</title>
+  <title>Heimdall</title>
 </head>
 <body>
-  <h1>It works!</h1>
-  <a href="/api">http://localhost:3000/api</a>
+  <p>For API Documentation, visit <a href=http://github.com/liftedkilt/cloudflare-heimdall>liftedkilt/cloudflare-heimdall</p>
 </body>
 </html>`;
