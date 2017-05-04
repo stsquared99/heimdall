@@ -27,17 +27,15 @@ export default async(req, res) => {
 	log.debug({req: req}, 'DELETE received for %s record on zone %s', req.params.identifier, req.params.zone_identifier);
 
 	deleteRecord(req)
-		.then(async function(record) {
+		.then(function(record) {
 			let generatedRecord = cloudflare.DNSRecord.create(record);
-			let tombstone = await cf.deleteDNS(generatedRecord);
-			return tombstone;
-		})
-		.then(async function(result) {
-			log.info('Record %s was deleted', result.id);
+			let tombstone = cf.deleteDNS(generatedRecord);
+
+			log.info('Record %s was deleted', generatedRecord.id);
 			res.status(200).json({
 				result: 'Record deleted',
 				info: {
-					id: result.id,
+					'id': generatedRecord.id,
 				},
 			});
 		});
