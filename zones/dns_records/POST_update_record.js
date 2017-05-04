@@ -1,7 +1,6 @@
-/**
- * Model Schema
- */
-const Records = require('../../models/records');
+'use strict';
+
+const validate = require('../../utils/validate');
 
 export const route = {
 	method: 'post',

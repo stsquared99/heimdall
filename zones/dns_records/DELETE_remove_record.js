@@ -1,6 +1,5 @@
-/**
- * Model Schema
- */
+'use strict';
+
 const Records = require('../../models/records');
 
 export const route = {
