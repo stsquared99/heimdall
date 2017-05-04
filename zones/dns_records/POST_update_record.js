@@ -11,20 +11,10 @@ export const route = {
 
 export default async(req, res) => {
 	log.debug({req: req}, 'received request');
-	if (!req.body.hasOwnProperty('content')
-	|| !req.body.hasOwnProperty('name')
-	|| !req.body.hasOwnProperty('type')) {
-		log.error('missing parameters');
-		res.status(403).json({
-			result: 'error',
-			message: 'Cannot update record - missing required parameters',
-			info: {
-				content: req.body.content,
-				id: id,
-				name: req.body.name,
-				type: req.body.type,
-			},
-		});
+	let error = validate.reqParams(req, 'cannot update record - missing required parameters');
+
+	if (error !== '') {
+		res.status(403).json(error);
 	} else {
 		try {
 			await Records.findOneAndUpdate({

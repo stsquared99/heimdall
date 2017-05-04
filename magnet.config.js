@@ -9,6 +9,7 @@ module.exports = {
 			'models/*.js',
 			'config.js',
       '*.config.js',
+      'utils/*.js',
     ],
     ignore: ['build/**', 'node_modules/**', 'static/**', 'test/**'],
   },
