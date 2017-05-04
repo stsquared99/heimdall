@@ -13,7 +13,7 @@ export default async(req, res) => {
 	log.debug({req: req}, 'received request');
 	try {
 		let recordsList = Records.find({
-			zone_id: req.params.zone_identifier,
+			zoneId: req.params.zone_identifier,
 		}).exec();
 		log.info('The records were retrieved for zone: %s', req.params.zone_identifier);
 		return recordsList;
