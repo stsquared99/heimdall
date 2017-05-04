@@ -15,21 +15,47 @@ export default async(req, res) => {
 	if (error !== '') {
 		res.status(403).json(error);
 	} else {
-		try {
-			await Records.findOneAndUpdate({
+		let data = req.body || {};
+		data.id = req.params.identifier;
+		data.zoneId = req.params.zone_identifier;
 
-				id: req.params.identifier,
-				zone_id: req.params.zone_identifier,
-			}, {
-				$set: {
-					'content': req.body.content,
-					'name': req.body.name,
-					'proxied': req.body.proxied,
-					'ttl': req.body.ttl,
-					'type': req.body.type,
-				},
-			});
-			log.info('record created');
+		await Records.findOneAndUpdate({
+
+			id: req.params.identifier,
+			zoneId: req.params.zone_identifier,
+		}, {
+			data,
+		},
+		{
+			new: true,
+		})
+		.then(function (record) {
+			let generatedRecord = cloudflare.DNSRecord.create(data);
+
+			log.info(generatedRecord);
+
+			let editedRecord = {
+				'name': generatedRecord.name,
+				'content': generatedRecord.content,
+				'type': generatedRecord.type,
+				'ttl': generatedRecord.ttl,
+				'proxied': generatedRecord.proxied,
+			};
+
+			log.info(editedRecord);
+			return cf.editDNS(generatedRecord);
+		})
+		.then(async function(record) {
+			log.info(record.id);
+			data.id = record.id;
+
+			// Write record to DB
+			let entry = new Records(data);
+			await entry.save();
+			return data;
+		})
+		.then(function(record) {
+			log.info('record updated');
 			res.status(200).json({
 				result: 'success',
 				message: 'Record updated',
@@ -41,7 +67,8 @@ export default async(req, res) => {
 					type: req.body.type,
 				},
 			});
-		} catch (error) {
+		})
+		.catch(function(error) {
 			log.error({error: error}, 'Error updating a record');
 			res.status(500).json({
 				result: 'error',
@@ -50,6 +77,6 @@ export default async(req, res) => {
 					error: error,
 				},
 			});
-		}
+		});
 	}
 };
