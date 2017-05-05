@@ -1,6 +1,7 @@
 {
-  "name": "heimdall",
-  "description": "",
+  "name": "cloudflare-heimdall",
+  "description": "A proxy service that sits in front of Cloudflare providing more granular access control and local storage of all data for recovery and accounting",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "bunyan": "^1.8.10",
     "cloudflare": "^1.1.1",
@@ -15,5 +16,21 @@
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1"
-  }
+  },
+  "version": "0.1.0",
+  "main": "start.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liftedkilt/cloudflare-heimdall.git"
+  },
+  "keywords": [
+    "cloudflare",
+    "mongodb",
+    "api"
+  ],
+  "author": "liftedkilt",
+  "bugs": {
+    "url": "https://github.com/liftedkilt/cloudflare-heimdall/issues"
+  },
+  "homepage": "https://github.com/liftedkilt/cloudflare-heimdall#readme"
 }
