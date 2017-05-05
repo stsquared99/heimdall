@@ -27,11 +27,6 @@ export default async(req, res) => {
 
 	records[0].result.forEach(function(entry) {
 		delete entry.meta;
-		//delete entry.createdOn;
-		// delete entry.modifiedOn;
-		// delete entry.priority;
-		// delete entry.locked;
-		// delete entry.proxiable;
 
 		let entryClean = {
 			'name': entry.name,
