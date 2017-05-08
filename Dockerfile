@@ -12,7 +12,6 @@ COPY . /usr/local/cloudflare-heimdall
 
 RUN mv docker.config.js config.js
 
-
 EXPOSE 3000
 
 ENTRYPOINT ["/usr/local/bin/npm", "run"]
