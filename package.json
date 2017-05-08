@@ -17,7 +17,7 @@
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "start.js",
   "repository": {
     "type": "git",
