@@ -6,7 +6,7 @@ WORKDIR /usr/local/cloudflare-heimdall
 
 COPY package.json /usr/local/cloudflare-heimdall
 
-RUN npm install
+RUN yarn
 
 COPY . /usr/local/cloudflare-heimdall
 
