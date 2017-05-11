@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const mongooseApiQuery = require('mongoose-api-query');
 const Schema = mongoose.Schema;
 
 const RecordsSchema = new Schema({
@@ -55,9 +54,6 @@ const RecordsSchema = new Schema({
 }, {
 	minimize: false,
 });
-
-
-RecordsSchema.plugin(mongooseApiQuery);
 
 let Records = mongoose.model('Records', RecordsSchema);
 

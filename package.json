@@ -6,8 +6,7 @@
     "bunyan": "^1.8.10",
     "cloudflare": "^1.1.1",
     "magnet": "^1.0.0-alpha.13",
-    "mongoose": "^4.9.7",
-    "mongoose-api-query": "^0.1.1-pre"
+    "mongoose": "^4.9.7"
   },
   "scripts": {
     "dev": "magnet",
