@@ -1,6 +1,6 @@
 'use strict';
 
-const validate = require('../../utils/validate');
+const validate = require('../../lib/validate');
 
 export const route = {
 	method: 'post',
