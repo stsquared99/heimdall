@@ -5,3 +5,7 @@ node_js:
 notifications:
   slack:
     secure: y00NI2+AOUMNvT7MwAp449LQyx9K2tIQqTjCE93Tq1SulXiTPOH0AvzZ+iJj+V+fby8nslHlTMbBGbF/MWxamNKZfr5kzmOo3ubmCLxBy6AdDor6dwrQU4ZtQ/iIPBHapFvXuZv3cbD8eNN1nshulthblxjSLv2+/tT5f+dGEtSFRASiQ6zg4wSRXhuApi8VwUCJt3oU84W2u4Sucb0Pcmq61kUm74Il7N6iyCumlA0OhpOo/I3Hndi7ezH6eSH8pKp7BghkIqidlV6rRVUiwgnt0mHmVsVNyDXrxyQ/Mh1Y3QTMz/HP0gSDdGyeu+257fMMXb/qroqOU2HbGpbNUvWUGMKZrj4kTtmq1Brbl6Pw4C6p+SlTHLcvFq76LaCi+mN0/Zm/vSgNJkeDOxl9c0EZuh1Q8SrqD0FWvBBatNEPlku1BcaSj1ivve+9TLI40s02h4crhqPagA/j7Tx6c9zNdPdqs4/7Zuq/Gnm7DZLqKitIv1Zf5zR57iPqKN1Gxp2j3pJSART099fOO8M6tTM/W44onLoQipFNS5QquI/r8xUu1bY5rUn20khc6xlzhxO/V2IKDvW/7vvmrTRk0P0NcAdtrSleuIdXBAMOi61LkFl+B5KoHozekBCpAV7trHNQPhy/fVD+uCZ6UYLiPzKyeZundu1Yn/ieV7aO9uQ=
+cache:
+  yarn: true
+  directories:
+    - node_modules
