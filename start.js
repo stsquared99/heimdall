@@ -9,13 +9,9 @@ global.cf = new cloudflare({
 	'email': config.cfEmail,
 	'key': config.cfToken,
 });
-
 global.cloudflare = require('cloudflare');
-
 global.log = bunyan.createLogger({'name': 'cloudflare-heimdall', 'level': 'info'});
-
 global.Records = require('./models/records');
-
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db.uri);
