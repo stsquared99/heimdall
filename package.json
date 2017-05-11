@@ -19,7 +19,7 @@
     "eslint-config-google": "^0.7.1",
     "mocha": "^3.3.0"
   },
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "start.js",
   "repository": {
     "type": "git",

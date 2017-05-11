@@ -1,6 +1,6 @@
 # Heimdall Project
 
-This README is very much a WIP. Bear with us.
+This project seeks to extend [Cloudflare](cloudflare.com). It provides granular access control, versioning, and storage of all records in MongoDB. We prefer to maintain our own central source of truth for DNS, but we really appreciate how flexible and powerful [Cloudflare](cloudflare.com) is.
 
 ## Getting Started
 
@@ -8,80 +8,90 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+You will need Docker, NodeJS 7, and the Yarn package manager.
 ```
-Give examples
+$ node --version
+v7.10.0
+brew install yarn
+...
+$ yarn --version
+0.23.4
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+1) Clone this repo
 
 ```
-Give the example
+$ mkdir heimdall
+$ cd heimdall
+$ git clone https://github.com/heimdall-project/cloudflare.git
+$ cd cloudflare
 ```
 
-And repeat
+ 2) Install dependencies:
 
 ```
-until finished
+$ yarn
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+3) Start sample mongodb:
+
+```
+$ docker run --name mongo -p 27017:27017 -d mongo
+```
+
+4) Start heimdall:
+
+```
+$ yarn run dev
+```
+
+5) Test endpoint:
+
+```
+$ curl localhost:3000
+```
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+To test heimdall-cloudflare, simply run
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+$ yarn run test
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+For a real deployment, take a look at the [autopilot](https://github.com/heimdall-project/autopilot) repo.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [magnet](http://github.com/wedeploy/magnet) - For rapid generation of API routes and controllers
+* [yarn](https://yarnpkg.com/en/) - Dependency Management
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please do!
+
+Just fork this repo, clone it locally, fix some things, push back to your repo, and open a PR. 
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/heimdall-project/cloudflare/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **liftedkilt** - *Initial work* - [Liferay](https://github.com/Liferay)
+* **mikwerdna** - *Initial work* - [Liferay](https://github.com/Liferay)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the BSD-2-Clause License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Thanks to the [WeDeploy](https://wedeploy.com) team for creating [magnet](https://github.com/wedeploy/magnet)
