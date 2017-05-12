@@ -23,7 +23,7 @@
   "main": "start.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heimdall-project/cloudflare.git"
+    "url": "git+https://github.com/heimdall-project/heimdall.git"
   },
   "keywords": [
     "cloudflare",
@@ -32,7 +32,7 @@
   ],
   "author": "liftedkilt",
   "bugs": {
-    "url": "https://github.com/heimdall-project/cloudflare/issues"
+    "url": "https://github.com/heimdall-project/heimdall/issues"
   },
-  "homepage": "https://github.com/heimdall-project/cloudflare#readme"
+  "homepage": "https://github.com/heimdall-project/heimdall#readme"
 }
