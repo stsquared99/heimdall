@@ -1,5 +1,5 @@
 {
-  "name": "heimdall-cloudflare",
+  "name": "heimdall",
   "description": "A proxy service that sits in front of Cloudflare providing more granular access control and local storage of all data for recovery and accounting",
   "license": "BSD-2-Clause",
   "dependencies": {

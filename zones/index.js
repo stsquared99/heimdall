@@ -11,6 +11,6 @@ export default () => `<!DOCTYPE html>
   <title>Heimdall</title>
 </head>
 <body>
-  <p>For API Documentation, visit <a href=http://github.com/liftedkilt/cloudflare-heimdall>liftedkilt/cloudflare-heimdall</p>
+  <p>For API Documentation, visit <a href=https://github.com/heimdall-project/heimdall>heimdall-project/heimdall</p>
 </body>
 </html>`;

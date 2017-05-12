@@ -57,7 +57,7 @@ $ curl localhost:3000
 
 ## Running the tests
 
-To test heimdall-cloudflare, simply run
+To test heimdall, simply run
 ```
 $ yarn run test
 ```

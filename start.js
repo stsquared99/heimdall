@@ -10,7 +10,7 @@ global.cf = new cloudflare({
 	'key': config.cfToken,
 });
 global.cloudflare = require('cloudflare');
-global.log = bunyan.createLogger({'name': 'cloudflare-heimdall', 'level': 'info'});
+global.log = bunyan.createLogger({'name': 'heimdall', 'level': 'info'});
 global.Records = require('./models/records');
 
 mongoose.Promise = global.Promise;
