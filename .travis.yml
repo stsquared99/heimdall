@@ -14,5 +14,5 @@ services:
 before_install:
 - docker pull mongo
 - docker run -d -p 27017:27017 mongo
-before_start:
-- yarn run start &
+before_script:
+- cd /home/travis/build/heimdall-project/heimdall && yarn run dev &
