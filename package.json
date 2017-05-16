@@ -5,6 +5,7 @@
   "dependencies": {
     "bunyan": "^1.8.10",
     "cloudflare": "^1.1.1",
+    "consul": "^0.29.0",
     "magnet": "^1.0.0-alpha.13",
     "mongoose": "^4.9.7"
   },
@@ -15,9 +16,11 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
+    "chai": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1",
-    "mocha": "^3.3.0"
+    "mocha": "^3.4.1",
+    "supertest": "^3.0.0"
   },
   "version": "0.3.2",
   "main": "start.js",
