@@ -10,9 +10,7 @@ cache:
     - node_modules
 sudo: required
 services:
-  - docker
-before_install:
-- docker pull mongo
-- docker run -d -p 27017:27017 mongo
+  - mongodb
 before_script:
-- cd /home/travis/build/heimdall-project/heimdall && yarn run dev
+- cd /home/travis/build/heimdall-project/heimdall && yarn run dev &
+- sleep 5
