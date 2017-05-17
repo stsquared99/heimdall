@@ -2,12 +2,27 @@
 
 let chai = require('chai');
 let expect = chai.expect;
+let magnetjs = require('magnet');
 let supertest = require('supertest');
-let request = supertest('http://localhost:3000');
 let zoneId = process.env.cfZone;
+
+let request = supertest('http://localhost:3000');
 
 // Check Status Page
 describe('Heimdall API Integration Tests', function() {
+  let magnet = null;
+
+  before(async () => {
+    magnet = new magnetjs.Magnet({directory: '.'});
+
+    await magnet.build();
+    await magnet.start();
+  });
+
+  after(async () => {
+    await magnet.stop();
+  });
+
   describe('#GET /', function() {
     it('should get status page', function(done) {
       request.get('/')
