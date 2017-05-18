@@ -11,10 +11,8 @@ export const route = {
 export default async(req, res) => {
 	log.debug({req: req}, 'received request');
 
-	let zone = req.params.zone_identifier;
-
 	try {
-		return CfRecords.getRecords(zone);
+		return CfRecords.getRecords(req.params.zone_identifier);
 	} catch (error) {
 		log.error({ error: error }, 'Error listing records');
 		res.status(500).json({
