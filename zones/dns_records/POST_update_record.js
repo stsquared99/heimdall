@@ -10,7 +10,7 @@ export const route = {
 
 export default async(req, res) => {
 	log.debug({
-		req: req
+		req: req,
 	}, 'received request');
 	let error = validate.reqParams(req, 'Cannot update record - missing required parameters');
 
@@ -29,7 +29,7 @@ export default async(req, res) => {
 					new: true,
 				})
 			.then(function(record) {
-				let generatedRecord = cloudflare.DNSRecord.create(data);
+				let generatedRecord = Cloudflare.DNSRecord.create(data);
 
 				log.info(generatedRecord);
 

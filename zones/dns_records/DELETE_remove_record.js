@@ -19,7 +19,7 @@ export default async(req, res) => {
 		id: req.params.identifier,
 	};
 
-	let generatedRecord = await cloudflare.DNSRecord.create(data);
+	let generatedRecord = await Cloudflare.DNSRecord.create(data);
 
 	cf.deleteDNS(generatedRecord);
 
